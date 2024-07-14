@@ -23,7 +23,7 @@ for n in range(10, 101, 10):
     elapsed = end - start
     y.append(elapsed)
     print("\nsum:",sum)
-plt.plot(x, y, label='Quick sort')
+plt.plot(x, y, label='Sum')
 plt.xlabel("Input Size")
 plt.ylabel("Time(ms)")
 plt.legend(loc='upper right')
