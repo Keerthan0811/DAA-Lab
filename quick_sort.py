@@ -21,7 +21,7 @@ def part(a, low, high):
     while True:
         while i <= j and a[i] <= pivot:
             i += 1
-        while i <= j and a[j] >= pivot:
+        while i <= j and a[j] > pivot:
             j -= 1
         if i <= j:
             a[i], a[j] = a[j], a[i]
