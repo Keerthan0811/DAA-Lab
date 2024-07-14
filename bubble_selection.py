@@ -49,8 +49,7 @@ import time
 from random import randint
 import matplotlib.pyplot as plt
 
-def bubble(arr):
-    n=len(arr)
+def bubble(arr,n):
     for i in range(n):
         for j in range(0,n-i-1):
             if arr[j]>arr[j+1]:
@@ -66,7 +65,7 @@ def main():
             a.append(randint(1, n))
 
         start = time.time()
-        bubble(a)
+        bubble(a,n)
         end = time.time()
         elapsed = end - start
         y.append(elapsed)
