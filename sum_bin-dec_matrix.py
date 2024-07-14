@@ -85,13 +85,12 @@ def main():
         matrix = np.random.randint(1,100,(rows,cols))
         
         start = time.time()
-        for i in range(n):
-            print_even_elements(matrix)
+        print_even_elements(matrix)
         end = time.time()
     
         elapsed = end - start
         y.append(elapsed)
-    plt.plot(x, y, label='Dec-Bin')
+    plt.plot(x, y, label='Matrix')
     plt.xlabel("Input Size")
     plt.ylabel("Time(ms)")
     plt.legend(loc='upper right')
