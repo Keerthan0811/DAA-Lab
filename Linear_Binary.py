@@ -24,10 +24,10 @@ def main():
         x.append(n)
         a = []
         for i in range(n):
-            a.append(randint(1, n))
+            a.append(random.randint(1, n))
 
         start = time.time()
-        res=linear(a,randint(1,10))
+        res=linear(a,random.choice(a))
         end = time.time()
         elapsed = end - start
         y.append(elapsed)
