@@ -35,7 +35,8 @@ def main():
     y = []
     for n in range(100, 1100, 100): 
         x.append(n)
-        a = [randint(1, 10000) for _ in range(n)]
+        for i in range(n):
+            a.append(random.randint(1,n))
 
         start = time.time()
         divide(a, 0, len(a) - 1)
