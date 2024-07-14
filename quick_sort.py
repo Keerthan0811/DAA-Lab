@@ -6,6 +6,10 @@
 
 import time
 from random import randint
+import matplotlib.pyplot as plt
+
+
+
 def divide(a, low, high):
     if low < high:
         j=part(a,low,high)
@@ -42,6 +46,11 @@ def main():
         y.append(elapsed)
         print("\n-----Sorted list----\n")
         print(a)
+        plt.plot(x, y, label='Quick sort')
+    plt.xlabel("Input Size")
+    plt.ylabel("Time(ms)")
+    plt.legend(loc='upper right')
+    plt.show()
 main()
 
 
