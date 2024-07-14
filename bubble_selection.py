@@ -45,4 +45,37 @@ main()
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Bubble sort
 
+import time
+from random import randint
+import matplotlib.pyplot as plt
+
+def bubble(arr):
+    n=len(arr)
+    for i in range(n):
+        for j in range(0,n-i-1):
+            if arr[j]>arr[j+1]:
+                arr[j],arr[j+1]=arr[j+1],arr[j]
+                
+def main():
+    x = []
+    y = []
+    for n in range(10, 101, 10):
+        x.append(n)
+        a = []
+        for i in range(n):
+            a.append(randint(1, n))
+
+        start = time.time()
+        bubble(a)
+        end = time.time()
+        elapsed = end - start
+        y.append(elapsed)
+        print("\n-----Sorted list----\n")
+        print(a)
+    plt.plot(x, y, label='bubble sort')
+    plt.xlabel("Input Size")
+    plt.ylabel("Time(ms)")
+    plt.legend(loc='upper right')
+    plt.show()
+main()
 
