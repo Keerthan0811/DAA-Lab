@@ -63,9 +63,9 @@ def main():
 main()
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # matrix
-import time
-import random
 import matplotlib.pyplot as plt
+import time
+import numpy as np
 
 def print_even_elements(matrix):
     even_elements = []
@@ -75,19 +75,25 @@ def print_even_elements(matrix):
                 even_elements.append(elem)
     return even_elements
 
-def plot_time_complexity():
-    n= list(range(1, 1001, 100))
-    times = []
-    for i in n:
-        matrix = [[random.randint(1, 100) for _ in range(i)] for _ in range(i)]
-        start_time = time.time()
-        print_even_elements(matrix)
-        end_time = time.time()
-        times.append(end_time - start_time)
-    plt.plot(n, times)
-    plt.xlabel('n')
-    plt.ylabel('Time (seconds)')
-    plt.title('Time Complexity of Printing Even Elements in a Matrix')
+def main():
+    x=[]
+    y = []
+    for n in range(10, 101, 10):
+        x.append(n)
+        rows = np.random.randint(1,100)
+        cols = np.random.randint(1,100)
+        matrix = np.random.randint(1,100,(rows,cols))
+        
+        start = time.time()
+        for i in range(n):
+            print_even_elements(matrix)
+        end = time.time()
+    
+        elapsed = end - start
+        y.append(elapsed)
+    plt.plot(x, y, label='Dec-Bin')
+    plt.xlabel("Input Size")
+    plt.ylabel("Time(ms)")
+    plt.legend(loc='upper right')
     plt.show()
-
-plot_time_complexity()
+main()
