@@ -60,20 +60,23 @@ def binary_search(arr, x):
 
 
 def main():
-    sizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
-    times = []
+    x = []
+    y = []
 
-    for i in sizes:
-        arr = sorted([random.randint(1, 10000) for _ in range(i)])
-        k = random.choice(arr)  # Choose a random element to search for
+    for n in range(10,101,1):
+        x.append(n)
+        a=[]
+        for i in range(n):
+            a.append(n)
+        a.sort()
+        k = random.choice(a) 
         start_time = time.time()
-        binary_search(arr, k)
+        binary_search(a, k)
         end_time = time.time()
         elapsed=start_time-end_time
-        times.append(elapsed)
-        print(f"Searched {i} labels in {elapsed:.6f} seconds")
+        y.append(elapsed)
 
-    plt.plot(sizes, times, marker='o')
+    plt.plot(x, y)
     plt.xlabel('Number of Label Identifiers')
     plt.ylabel('Time Taken (seconds)')
     plt.title('Binary Search Time Complexity')
