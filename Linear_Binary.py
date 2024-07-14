@@ -14,8 +14,7 @@ def linear(a,k):
     for i in range(0,n):
         if a[i]==k:
             return k
-        else:
-            return -9999
+    return -9999
         
         
 def main():
