@@ -35,6 +35,7 @@ def main():
     y = []
     for n in range(100, 1100, 100): 
         x.append(n)
+        a=[]
         for i in range(n):
             a.append(random.randint(1,n))
 
