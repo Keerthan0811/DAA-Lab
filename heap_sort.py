@@ -6,42 +6,62 @@
 # Heap Sort:
 
 
-def heapify(arr, n, i):
-    largest_index = i
-    left_index = 2*i + 1
-    right_index = 2*i + 2
-    if left_index < n and arr[left_index] > arr[largest_index]:
-        largest_index = left_index
-    if right_index < n and arr[right_index] > arr[largest_index]:
-        largest_index = right_index
-    if largest_index != i:
-        arr[i], arr[largest_index] = arr[largest_index], arr[i]
-        heapify(arr, n, largest_index)
+import random
+import matplotlib.pyplot as plt
+import time
+import numpy as np
 
+def heapify(a,n,i):
+    large_i=i
+    left_i=2*i+1
+    right_i=2*i+2
+    
+    if left_i<n and a[left_i]>a[large_i]:
+        large_i=left_i
+    if right_i<n and a[right_i]>a[large_i]:
+        large_i=right_i
+    if large_i != i:
+        a[i],a[large_i]=a[large_i],a[i]
+        heapify(a,n,large_i)
+        
+def max_haep(a):
+    for i in range((len(a)//2) -1,-1,-1):
+        heapify(a,len(a),i)
+    print("max heap")
+    print(a)
 
-def max_heap(arr):
-    for i in range(int(len(arr)/2) - 1, -1, -1):
-        heapify(arr, len(arr), i)
-    print("Max Heap Tree")
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
-    print()
-
-
-def heap_sort(arr):
-    for i in range(len(arr) - 1, -1, -1):
-        arr[0], arr[i] = arr[i], arr[0]
-        heapify(arr, i, 0)
-
+def heapsort(a):
+    for i in range(len(a)-1,-1,-1):
+        a[0],a[i]=a[i],a[0]
+        heapify(a,i,0)
+        
+def graph(x,y,name):
+    plt.plot(x,y,label=name)
+    plt.xlabel("Array Size")
+    plt.ylabel("Time(ms)")
+    plt.legend(loc="upper right")
+    plt.show
 
 def main():
-    arr = [1, 12, 9, 5, 6, 10]
-    print("Unsorted list")
-    print(arr)
-    max_heap(arr)
-    heap_sort(arr)
-    print("Sorted list")
-    print(arr)   
+    x=[]
+    y=[]
+    for n in range(10,101,10):
+        x.append(n)
+        a=[]
+        for i in range(n):
+            a.append(random.randint(0,n))
+        
+        start=time.time()
+        max_haep(a)
+        heapsort(a)
+        end=time.time()
+        t=end-start
+        
+        print("Sorted")
+        print(a)
+        y.append(t)
+    graph(x,y,"Heap Sort")
+    
 main()
 #  Output:
 # Unsorted list
