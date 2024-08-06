@@ -6,80 +6,66 @@
 # // 1. Linear Search
 # // 2. Binary search
 
-# Linear search
 import time
 import matplotlib.pyplot as plt
-def linear(a,k):
-    n=len(a)
-    for i in range(0,n):
-        if a[i]==k:
-            return k
-    return -9999
-        
-        
-def main():
-    x = []
-    y = []
-    for n in range(10, 101, 10):
-        x.append(n)
-        a = []
-        for i in range(n):
-            a.append(random.randint(1, n))
-
-        start = time.time()
-        res=linear(a,random.choice(a))
-        end = time.time()
-        elapsed = end - start
-        y.append(elapsed)
-        print(res)
-        print(a)
-    plt.plot(x, y, label='Linear search')
-    plt.xlabel("Input Size")
-    plt.ylabel("Time(ms)")
-    plt.legend(loc='upper right')
-    plt.show()
-main()
-# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# binary search
-import time
 import random
-import matplotlib.pyplot as plt
 
-def binary_search(arr, x):
-    left, right = 0, len(arr) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if arr[mid] == x:
-            return mid
-        elif arr[mid] < x:
-            left = mid + 1
-        else:
-            right = mid - 1
+def linear(a,k):
+    for i in range(len(a)):
+        if a[i]==k:
+            return i
     return -1
-
-
-
+    
+def binary(a,k):
+    low=0
+    high=len(a)-1
+    while low<=high:
+        mid=(low+high)//2
+        if k==a[mid]:
+            return mid
+        elif k>a[mid]:
+            low=mid+1
+        else:
+            high=mid-1
+    return -1
+    
+def graph(x,y,str):
+    
+    plt.plot(x,y,label=str)
+    plt.xlabel("Input size")
+    plt.ylabel("Time(ms)")
+    plt.legend(loc="upper right")
+    plt.show()
+    
 def main():
-    x = []
-    y = []
-
+    x1=[]
+    y1=[]
+    y2=[]
+    lin=[]
+    bina=[]
     for n in range(10,101,1):
-        x.append(n)
+        x1.append(n)
         a=[]
         for i in range(n):
-            a.append(n)
+            a.append(random.randint(0,n))
+            
+        start=time.time()
+        res1=linear(a,random.choice(a))
+        end=time.time()
+        t=end-start
+        y1.append(t)
+        lin.append(res1)
+        
         a.sort()
-        k = random.choice(a) 
-        start_time = time.time()
-        binary_search(a, k)
-        end_time = time.time()
-        elapsed=start_time-end_time
-        y.append(elapsed)
-
-    plt.plot(x, y)
-    plt.xlabel('Number of Label Identifiers')
-    plt.ylabel('Time Taken (seconds)')
-    plt.title('Binary Search Time Complexity')
-    plt.grid(True)
-    plt.show()
+        start=time.time()
+        res2=binary(a,random.choice(a))
+        end=time.time()
+        t=end-start
+        y2.append(t)
+        bina.append(res2)
+    
+    print(lin)
+    print(bina)
+    graph(x1,y1,"Linear search")
+    graph(x1,y2,"Binary search")
 main()
